@@ -17,7 +17,7 @@ export const AppTemplate = ({ header, main, footer }: AppTemplateProps) => {
       bg="gray.50"
       minH="100vh"
     >
-      <Chakra.VStack w="full" maxW="container.lg" bg="red">
+      <Chakra.VStack w="full" maxW="1400px">
         {header}
         {main}
         {footer}
