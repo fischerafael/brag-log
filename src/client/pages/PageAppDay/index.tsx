@@ -1,27 +1,12 @@
 import React, { useState } from "react";
+import * as Icon from "react-icons/hi";
 import * as Chakra from "@chakra-ui/react";
 import { AppTemplate } from "@/src/client/components/AppTemplate";
 import { ITask } from "@/src/shared/entities";
-
-interface IPageAppDayState {
-  currentTask: ITask;
-  tasks: ITask[];
-}
+import { useTasks } from "@/src/client/hooks/useTasks";
+import { formatDate } from "../../utils";
 
 export const PageAppDay = () => {
-  const [state, setState] = useState<IPageAppDayState>({
-    currentTask: {
-      category: [],
-      date: new Date(),
-      description: "",
-      duration: 0,
-      id: "",
-      isDone: false,
-      value: [],
-    },
-    tasks: [],
-  });
-
   return (
     <AppTemplate
       main={
@@ -68,10 +53,12 @@ export const Task = () => {
 };
 
 export const TaskEdit = () => {
+  const { state, methods } = useTasks();
+
   return (
     <Chakra.Grid
       w="full"
-      gridTemplateColumns="1fr 4fr 1fr 1fr 2fr"
+      gridTemplateColumns="2fr 6fr 1fr 1fr 1fr 1fr"
       cursor="pointer"
       alignItems="flex-start"
       py="8"
@@ -83,18 +70,25 @@ export const TaskEdit = () => {
         placeholder="Date"
         w="full"
         borderRadius="4"
+        value={formatDate(state.task.date)}
+        onChange={(e) => methods.handleSetTask("date", e.target.value)}
       />
       <Chakra.Textarea
         fontSize="xs"
         placeholder="Description"
         w="full"
         borderRadius="4"
+        value={state.task.description}
+        onChange={(e) => methods.handleSetTask("description", e.target.value)}
       />
       <Chakra.Input
         fontSize="xs"
         placeholder="Duration"
         w="full"
         borderRadius="4"
+        type="number"
+        value={state.task.duration}
+        onChange={(e) => methods.handleSetTask("duration", e.target.value)}
       />
       <Chakra.Button
         fontSize="xs"
@@ -112,8 +106,13 @@ export const TaskEdit = () => {
         variant="outline"
         borderRadius="4"
       >
-        Value Added
+        Value
       </Chakra.Button>
+
+      <Chakra.HStack objectFit="contain" w="full">
+        <Chakra.IconButton aria-label="" icon={<Icon.HiOutlineTrash />} />
+        <Chakra.IconButton aria-label="" icon={<Icon.HiOutlineCheck />} />
+      </Chakra.HStack>
     </Chakra.Grid>
   );
 };
