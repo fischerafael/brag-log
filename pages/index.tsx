@@ -1,7 +1,7 @@
-import React from "react";
+import { PageAppLandingPage } from "@/src/client/pages/PageAppLandingPage";
 
 const index = () => {
-  return <div>index</div>;
+  return <PageAppLandingPage />;
 };
 
 export default index;
