@@ -1,12 +1,15 @@
 import React from "react";
 import * as Chakra from "@chakra-ui/react";
 
+const formURL = "https://forms.gle/Lnv7WUThSM5unqXx5";
+
 export const PageAppLandingPage = () => {
   return (
     <TemplateLandingPage bg="gray.50">
       <Header />
       <HeroSection />
       <FeaturesSection />
+      <Footer />
     </TemplateLandingPage>
   );
 };
@@ -45,10 +48,12 @@ export const Header = () => {
       <Chakra.Text fontWeight="black">
         xp
         <Chakra.Text as="span" color="blue.500">
-          log
+          tracker
         </Chakra.Text>
       </Chakra.Text>
-      <Chakra.Button colorScheme="blue">Entrar</Chakra.Button>
+      <a target="_blank" href={formURL}>
+        <Chakra.Button colorScheme="blue">Entrar</Chakra.Button>
+      </a>
     </Chakra.HStack>
   );
 };
@@ -56,12 +61,20 @@ export const Header = () => {
 export const HeroSection = () => {
   return (
     <Chakra.Grid
-      h="70vh"
+      minH="70vh"
       w="full"
       maxW="container.md"
       gridTemplateColumns={["1fr", "1fr", "1fr 1fr"]}
     >
       <Chakra.VStack align="flex-start" justify="center" spacing="8">
+        <Chakra.Tag
+          colorScheme="blue"
+          borderRadius="full"
+          fontSize="xs"
+          color="blue.500"
+        >
+          Bem-Vindo ao xptracker
+        </Chakra.Tag>
         <Chakra.Text
           fontWeight="bold"
           fontSize="5xl"
@@ -75,16 +88,22 @@ export const HeroSection = () => {
           do seu trabalho.
         </Chakra.Text>
         <Chakra.Text>
-          O xplog é uma plataforma que permite que profissionais de tecnologia
-          gerenciem e demonstrem o valor gerado por seu trabalho no dia-a-dia
-          para empregadores, pares e recrutadores.
+          O xptracker é uma plataforma que permite que profissionais de
+          tecnologia gerenciem e demonstrem o valor gerado por seu trabalho no
+          dia-a-dia para empregadores, pares e recrutadores.
         </Chakra.Text>
-        <Chakra.Button colorScheme="blue">Demonstrar meu Valor</Chakra.Button>
+        <a target="_blank" href={formURL}>
+          <Chakra.Button colorScheme="blue">Demonstrar meu Valor</Chakra.Button>
+        </a>
       </Chakra.VStack>
 
-      <Chakra.VStack align="flex-start" justify="center" spacing="8">
-        <Chakra.Image src="/hero-image.svg" aria-label="heroImage" />
-      </Chakra.VStack>
+      <Chakra.Grid alignItems="center" justifyItems="center" gap="8">
+        <Chakra.Image
+          src="/hero-image.svg"
+          aria-label="heroImage"
+          maxW="350px"
+        />
+      </Chakra.Grid>
     </Chakra.Grid>
   );
 };
@@ -114,21 +133,21 @@ export const FeatureCard = ({ title, subTitle }: FeatureCardProps) => {
 const features: FeatureCardProps[] = [
   {
     id: "1",
-    title: "Gerencie suas Tarefas",
+    title: "Lembre de suas conquistas",
     subTitle:
-      "O xplog não é apenas mais um todo list. Gerencie tarefas completadas no dia e o valor gerado por elas",
+      "Mantenha um histórico de todas as tarefas profissionais completadas no dia e o valor gerado por elas",
   },
   {
     id: "2",
     title: "Estatísticas",
     subTitle:
-      "Visualize as tarefas - valor gerado pelo seu trabalho - ao longo dos dias, semanas e meses.",
+      "Visualize as tarefas - e o valor gerado pelo seu trabalho - ao longo dos dias, semanas e meses.",
   },
   {
     id: "3",
     title: "Prova Social",
     subTitle:
-      "Compartilhe seus resultados publicamente e demonstre de fato seu valor.",
+      "Compartilhe seus resultados e conquistas publicamente, demonstre de fato seu valor e avance profissionalmente.",
   },
 ];
 
@@ -149,5 +168,17 @@ export const FeaturesSection = () => {
         />
       ))}
     </Chakra.Grid>
+  );
+};
+
+const Footer = () => {
+  return (
+    <Chakra.Grid
+      w="full"
+      maxW="container.md"
+      gridTemplateColumns={["1fr", "1fr", "1fr 1fr"]}
+      gap="8"
+      py="8"
+    ></Chakra.Grid>
   );
 };
