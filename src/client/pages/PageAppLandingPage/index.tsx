@@ -51,7 +51,7 @@ export const Header = () => {
           log
         </Chakra.Text>
       </Chakra.Text>
-      <a target="_blank" href={formURL}>
+      <a target="_blank" rel="noreferrer" href={formURL}>
         <Chakra.Button colorScheme="blue">Entrar</Chakra.Button>
       </a>
     </Chakra.HStack>
@@ -92,7 +92,7 @@ export const HeroSection = () => {
           gerenciem e demonstrem o valor gerado por seu trabalho no dia-a-dia
           para empregadores, pares e recrutadores.
         </Chakra.Text>
-        <a target="_blank" href={formURL}>
+        <a target="_blank" rel="noreferrer" href={formURL}>
           <Chakra.Button colorScheme="blue">Demonstrar meu Valor</Chakra.Button>
         </a>
       </Chakra.VStack>
