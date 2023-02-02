@@ -46,9 +46,9 @@ export const Header = () => {
       h="10vh"
     >
       <Chakra.Text fontWeight="black">
-        xp
+        brag
         <Chakra.Text as="span" color="blue.500">
-          tracker
+          log
         </Chakra.Text>
       </Chakra.Text>
       <a target="_blank" href={formURL}>
@@ -73,7 +73,7 @@ export const HeroSection = () => {
           fontSize="xs"
           color="blue.500"
         >
-          Bem-Vindo ao xptracker
+          Bem-Vindo ao #braglog
         </Chakra.Tag>
         <Chakra.Text
           fontWeight="bold"
@@ -88,9 +88,9 @@ export const HeroSection = () => {
           do seu trabalho.
         </Chakra.Text>
         <Chakra.Text>
-          O xptracker é uma plataforma que permite que profissionais de
-          tecnologia gerenciem e demonstrem o valor gerado por seu trabalho no
-          dia-a-dia para empregadores, pares e recrutadores.
+          O braglog é uma plataforma que permite que profissionais de tecnologia
+          gerenciem e demonstrem o valor gerado por seu trabalho no dia-a-dia
+          para empregadores, pares e recrutadores.
         </Chakra.Text>
         <a target="_blank" href={formURL}>
           <Chakra.Button colorScheme="blue">Demonstrar meu Valor</Chakra.Button>
