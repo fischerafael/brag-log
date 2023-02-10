@@ -4,6 +4,7 @@ import { Header, TemplateLandingPage } from "../PageAppLandingPage";
 import { FormControl } from "../../components/FormControl";
 import { Select } from "../../components/Select";
 import { Input } from "../../components/Input";
+import { NumberInput } from "../../components/NumberInput";
 
 export const PageAppTask = () => {
   return (
@@ -24,6 +25,7 @@ export const DashboardTask = () => {
       gridTemplateColumns={["1fr"]}
     >
       <FormControl label="Task Description" input={<Input />} />
+      <FormControl label="Task Duration" input={<NumberInput />} />
       <FormControl label="Task Category" input={<Select options={[]} />} />
       <Chakra.Textarea placeholder="Description" />
       <Chakra.Input placeholder="Duration" />
