@@ -1,6 +1,7 @@
 import React from "react";
 import * as Chakra from "@chakra-ui/react";
 import { Header, TemplateLandingPage } from "../PageAppLandingPage";
+import { Link } from "../../components/Link";
 
 export const PageAppDashboard = () => {
   return (
@@ -37,17 +38,19 @@ export interface CardTaskSimpleProps {
 
 export const CardTaskSimple = () => {
   return (
-    <Chakra.HStack
-      bg="white"
-      w="full"
-      p="4"
-      justify="space-between"
-      cursor="pointer"
-    >
-      <Chakra.Text>1324</Chakra.Text>
-      <Chakra.Text>Worked on the dashboard of Brag Log App</Chakra.Text>
-      <Chakra.Tag size="sm">#development</Chakra.Tag>
-      <Chakra.Text>0,5 h</Chakra.Text>
-    </Chakra.HStack>
+    <Link href="/app/task/">
+      <Chakra.HStack
+        bg="white"
+        w="full"
+        p="4"
+        justify="space-between"
+        cursor="pointer"
+      >
+        <Chakra.Text>1324</Chakra.Text>
+        <Chakra.Text>Worked on the dashboard of Brag Log App</Chakra.Text>
+        <Chakra.Tag size="sm">#development</Chakra.Tag>
+        <Chakra.Text>0,5 h</Chakra.Text>
+      </Chakra.HStack>
+    </Link>
   );
 };
