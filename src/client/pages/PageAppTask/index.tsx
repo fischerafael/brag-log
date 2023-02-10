@@ -5,6 +5,7 @@ import { FormControl } from "../../components/FormControl";
 import { Select } from "../../components/Select";
 import { Input } from "../../components/Input";
 import { NumberInput } from "../../components/NumberInput";
+import { useCategories } from "../../hooks/useCategories";
 
 export const PageAppTask = () => {
   return (
@@ -16,6 +17,8 @@ export const PageAppTask = () => {
 };
 
 export const DashboardTask = () => {
+  const categoryOptions = useCategories();
+
   return (
     <Chakra.Grid
       w="full"
@@ -26,9 +29,10 @@ export const DashboardTask = () => {
     >
       <FormControl label="Task Description" input={<Input />} />
       <FormControl label="Task Duration" input={<NumberInput />} />
-      <FormControl label="Task Category" input={<Select options={[]} />} />
-      <Chakra.Textarea placeholder="Description" />
-      <Chakra.Input placeholder="Duration" />
+      <FormControl
+        label="Task Category"
+        input={<Select options={categoryOptions} />}
+      />
     </Chakra.Grid>
   );
 };
