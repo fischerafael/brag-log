@@ -5,6 +5,5 @@ export interface ITask {
   isDone: false;
   description: string;
   category: string[];
-  value: string[];
   other?: any;
 }

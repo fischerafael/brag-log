@@ -1,5 +1,5 @@
 import { ITask } from "@/src/shared/entities";
-import React, { useState } from "react";
+import { useState } from "react";
 import { formatDate } from "../../utils";
 
 export const useTasks = () => {
@@ -11,7 +11,6 @@ export const useTasks = () => {
     duration: 0,
     id: "",
     isDone: false,
-    value: [],
   });
 
   console.log(task);
