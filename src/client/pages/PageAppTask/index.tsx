@@ -7,6 +7,7 @@ import { Input } from "../../components/Input";
 import { NumberInput } from "../../components/NumberInput";
 import { useCategories } from "../../hooks/useCategories";
 import { Switch } from "../../components/Switch";
+import { formatDate } from "../../utils";
 
 export const PageAppTask = () => {
   return (
@@ -33,6 +34,10 @@ export const DashboardTask = () => {
       <FormControl
         label="Task Category"
         input={<Select options={categoryOptions} />}
+      />
+      <FormControl
+        label="Task Date"
+        input={<Input type="date" value={formatDate(new Date())} />}
       />
 
       <Chakra.HStack w="full" justify="space-between" align="center">
