@@ -6,6 +6,7 @@ import { Select } from "../../components/Select";
 import { Input } from "../../components/Input";
 import { NumberInput } from "../../components/NumberInput";
 import { useCategories } from "../../hooks/useCategories";
+import { Switch } from "../../components/Switch";
 
 export const PageAppTask = () => {
   return (
@@ -33,6 +34,11 @@ export const DashboardTask = () => {
         label="Task Category"
         input={<Select options={categoryOptions} />}
       />
+
+      <Chakra.HStack w="full" justify="space-between" align="center">
+        <FormControl label="Task Done" input={<Switch />} />
+        <Chakra.Button colorScheme="blue">Save</Chakra.Button>
+      </Chakra.HStack>
     </Chakra.Grid>
   );
 };
