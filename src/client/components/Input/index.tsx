@@ -1,5 +1,7 @@
-import React from "react";
+import * as Chakra from "@chakra-ui/react";
 
-export const Input = () => {
-  return <div>Input</div>;
+interface InputProps extends Chakra.InputProps {}
+
+export const Input = ({ ...props }: InputProps) => {
+  return <Chakra.Input {...props} />;
 };

@@ -1,6 +1,9 @@
 import React from "react";
 import * as Chakra from "@chakra-ui/react";
 import { Header, TemplateLandingPage } from "../PageAppLandingPage";
+import { FormControl } from "../../components/FormControl";
+import { Select } from "../../components/Select";
+import { Input } from "../../components/Input";
 
 export const PageAppTask = () => {
   return (
@@ -19,6 +22,11 @@ export const DashboardTask = () => {
       alignItems="flex-start"
       gap="2"
       gridTemplateColumns={["1fr"]}
-    ></Chakra.Grid>
+    >
+      <FormControl label="Task Description" input={<Input />} />
+      <FormControl label="Task Category" input={<Select options={[]} />} />
+      <Chakra.Textarea placeholder="Description" />
+      <Chakra.Input placeholder="Duration" />
+    </Chakra.Grid>
   );
 };
