@@ -8,6 +8,7 @@ import { NumberInput } from "../../components/NumberInput";
 import { useCategories } from "../../hooks/useCategories";
 import { Switch } from "../../components/Switch";
 import { formatDate } from "../../utils";
+import { useTasks } from "../../hooks/useTasks";
 
 export const PageAppTask = () => {
   return (
@@ -20,6 +21,7 @@ export const PageAppTask = () => {
 
 export const DashboardTask = () => {
   const categoryOptions = useCategories();
+  const { methods, state } = useTasks();
 
   return (
     <Chakra.Grid

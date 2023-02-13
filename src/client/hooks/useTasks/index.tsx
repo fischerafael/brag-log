@@ -13,8 +13,6 @@ export const useTasks = () => {
     isDone: false,
   });
 
-  console.log(task);
-
   const handleSetTask = (key: keyof ITask, value: string) => {
     setTask((prev) => ({ ...prev, [key]: value }));
   };
