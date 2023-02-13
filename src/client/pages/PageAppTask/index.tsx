@@ -31,7 +31,17 @@ export const DashboardTask = () => {
       gap="2"
       gridTemplateColumns={["1fr"]}
     >
-      <FormControl label="Task Description" input={<Input />} />
+      <FormControl
+        label="Task Description"
+        input={
+          <Input
+            value={state.task.description}
+            onChange={(e) =>
+              methods.handleSetTask("description", e.target.value)
+            }
+          />
+        }
+      />
       <FormControl label="Task Duration" input={<NumberInput />} />
       <FormControl
         label="Task Category"

@@ -1,21 +1,28 @@
 import { ITask } from "@/src/shared/entities";
 import { useState } from "react";
-import { formatDate } from "../../utils";
+import * as Recoil from "recoil";
 
-export const useTasks = () => {
-  const [tasks, setTasks] = useState<ITask[]>([]);
-  const [task, setTask] = useState<ITask>({
+const taskState = Recoil.atom<ITask>({
+  key: "task",
+  default: {
     category: [],
     date: new Date(),
     description: "",
     duration: 0,
     id: "",
     isDone: false,
-  });
+  },
+});
+
+export const useTasks = () => {
+  const [tasks, setTasks] = useState<ITask[]>([]);
+  const [task, setTask] = Recoil.useRecoilState<ITask>(taskState);
 
   const handleSetTask = (key: keyof ITask, value: string) => {
     setTask((prev) => ({ ...prev, [key]: value }));
   };
+
+  console.log(task);
 
   return {
     state: {
