@@ -25,8 +25,11 @@ export const DashboardTask = () => {
   const tasks = useTasks();
 
   const handleAddTask = () => {
+    if (!task.isTaskValid()) return;
     tasks.addTask(task.getTask());
   };
+
+  const isDisabled = !task.isTaskValid();
 
   console.log(tasks.getTasks());
 
@@ -89,7 +92,11 @@ export const DashboardTask = () => {
             />
           }
         />
-        <Chakra.Button colorScheme="blue" onClick={handleAddTask}>
+        <Chakra.Button
+          colorScheme="blue"
+          isDisabled={isDisabled}
+          onClick={handleAddTask}
+        >
           Save
         </Chakra.Button>
       </Chakra.HStack>

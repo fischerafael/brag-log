@@ -29,9 +29,16 @@ export const useTask = () => {
     return task;
   };
 
+  const isTaskValid = () => {
+    return (
+      !!task.category && !!task.date && !!task.description && !!task.duration
+    );
+  };
+
   return {
     toggleTask,
     getTask,
     setTaskProperty,
+    isTaskValid,
   };
 };
