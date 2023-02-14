@@ -15,7 +15,7 @@ const taskState = Recoil.atom<ITask>({
   },
 });
 
-export const useTasks = () => {
+export const useTask = () => {
   const [tasks, setTasks] = useState<ITask[]>([]);
   const [task, setTask] = Recoil.useRecoilState<ITask>(taskState);
 

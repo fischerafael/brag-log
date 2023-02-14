@@ -7,7 +7,7 @@ import { Input } from "../../components/Input";
 import { NumberInput } from "../../components/NumberInput";
 import { useCategories } from "../../hooks/useCategories";
 import { Switch } from "../../components/Switch";
-import { useTasks } from "../../hooks/useTasks";
+import { useTask } from "../../hooks/useTasks";
 
 export const PageAppTask = () => {
   return (
@@ -20,7 +20,7 @@ export const PageAppTask = () => {
 
 export const DashboardTask = () => {
   const categoryOptions = useCategories();
-  const { methods, state } = useTasks();
+  const { methods, state } = useTask();
 
   return (
     <Chakra.Grid
