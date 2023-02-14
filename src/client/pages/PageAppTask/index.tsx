@@ -21,11 +21,11 @@ export const PageAppTask = () => {
 
 export const DashboardTask = () => {
   const categoryOptions = useCategories();
-  const { methods, state } = useTask();
+  const task = useTask();
   const tasks = useTasks();
 
   const handleAddTask = () => {
-    tasks.addTask(state.task);
+    tasks.addTask(task.getTask());
   };
 
   console.log(tasks.getTasks());
@@ -42,9 +42,9 @@ export const DashboardTask = () => {
         label="Task Description"
         input={
           <Input
-            value={state.task.description}
+            value={task.getTask().description}
             onChange={(e) =>
-              methods.handleSetTask("description", e.target.value)
+              task.setTaskProperty("description", e.target.value)
             }
           />
         }
@@ -53,8 +53,8 @@ export const DashboardTask = () => {
         label="Task Duration"
         input={
           <NumberInput
-            value={state.task.duration}
-            onChange={(value) => methods.handleSetTask("duration", value)}
+            value={task.getTask().duration}
+            onChange={(value) => task.setTaskProperty("duration", value)}
           />
         }
       />
@@ -63,8 +63,8 @@ export const DashboardTask = () => {
         input={
           <Select
             options={categoryOptions}
-            value={state.task.category}
-            onChange={(e) => methods.handleSetTask("category", e.target.value)}
+            value={task.getTask().category}
+            onChange={(e) => task.setTaskProperty("category", e.target.value)}
           />
         }
       />
@@ -73,8 +73,8 @@ export const DashboardTask = () => {
         input={
           <Input
             type="date"
-            value={state.task.date}
-            onChange={(e) => methods.handleSetTask("date", e.target.value)}
+            value={task.getTask().date}
+            onChange={(e) => task.setTaskProperty("date", e.target.value)}
           />
         }
       />
@@ -84,8 +84,8 @@ export const DashboardTask = () => {
           label="Task Done"
           input={
             <Switch
-              isChecked={state.task.isDone}
-              onChange={methods.handleToggleTask}
+              isChecked={task.getTask().isDone}
+              onChange={task.toggleTask}
             />
           }
         />

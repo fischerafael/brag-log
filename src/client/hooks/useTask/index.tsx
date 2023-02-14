@@ -17,21 +17,21 @@ const taskState = Recoil.atom<ITask>({
 export const useTask = () => {
   const [task, setTask] = Recoil.useRecoilState<ITask>(taskState);
 
-  const handleSetTask = (key: keyof ITask, value: string) => {
+  const setTaskProperty = (key: keyof ITask, value: string) => {
     setTask((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleToggleTask = () => {
+  const toggleTask = () => {
     setTask((prev) => ({ ...prev, isDone: !prev.isDone }));
   };
 
+  const getTask = () => {
+    return task;
+  };
+
   return {
-    state: {
-      task: task,
-    },
-    methods: {
-      handleSetTask: handleSetTask,
-      handleToggleTask: handleToggleTask,
-    },
+    toggleTask,
+    getTask,
+    setTaskProperty,
   };
 };
