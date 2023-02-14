@@ -7,7 +7,7 @@ import { Input } from "../../components/Input";
 import { NumberInput } from "../../components/NumberInput";
 import { useCategories } from "../../hooks/useCategories";
 import { Switch } from "../../components/Switch";
-import { useTask } from "../../hooks/useTasks";
+import { useTask } from "../../hooks/useTask";
 
 export const PageAppTask = () => {
   return (

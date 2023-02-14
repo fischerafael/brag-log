@@ -27,8 +27,6 @@ export const useTask = () => {
     setTask((prev) => ({ ...prev, isDone: !prev.isDone }));
   };
 
-  console.log(task);
-
   return {
     state: {
       task: task,
