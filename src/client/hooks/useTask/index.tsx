@@ -23,6 +23,10 @@ export const useTask = () => {
     setTask((prev) => ({ ...prev, [key]: value }));
   };
 
+  const setWholeTask = (task: ITask) => {
+    setTask(() => ({ ...task }));
+  };
+
   const toggleTask = () => {
     setTask((prev) => ({ ...prev, isDone: !prev.isDone }));
   };
@@ -41,11 +45,14 @@ export const useTask = () => {
     setTask(() => INITIAL_STATE);
   };
 
+  console.log(getTask());
+
   return {
     toggleTask,
     getTask,
     setTaskProperty,
     isTaskValid,
     resetTask,
+    setWholeTask,
   };
 };

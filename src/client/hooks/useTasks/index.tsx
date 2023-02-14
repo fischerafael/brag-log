@@ -24,6 +24,10 @@ export const useTasks = () => {
     return tasks;
   };
 
+  const getTask = (id: string): ITask | undefined => {
+    return tasks.find((task) => task.id === id);
+  };
+
   const resetTasks = () => {
     setTasks(() => []);
   };
@@ -33,5 +37,6 @@ export const useTasks = () => {
     removeTask,
     getTasks,
     resetTasks,
+    getTask,
   };
 };

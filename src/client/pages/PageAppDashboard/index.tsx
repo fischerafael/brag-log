@@ -3,6 +3,9 @@ import * as Chakra from "@chakra-ui/react";
 import { Header, TemplateLandingPage } from "../PageAppLandingPage";
 import { Link } from "../../components/Link";
 import { useTasks } from "../../hooks/useTasks";
+import { useFormatTask } from "../../hooks/useFormatTask";
+import { useTask } from "../../hooks/useTask";
+import { useNavigation } from "../../hooks/useNavigation";
 
 export const PageAppDashboard = () => {
   return (
@@ -15,6 +18,16 @@ export const PageAppDashboard = () => {
 
 export const DashboardMain = () => {
   const tasks = useTasks();
+  const formatTask = useFormatTask();
+  const task = useTask();
+  const navigate = useNavigation();
+
+  const handleNavigateToTask = (taskId: string) => {
+    const selectedTask = tasks.getTask(taskId);
+    if (!selectedTask) return;
+    task.setWholeTask(selectedTask);
+    navigate.navigateTo("/app/task");
+  };
 
   return (
     <Chakra.Grid
@@ -27,10 +40,11 @@ export const DashboardMain = () => {
       {tasks.getTasks().map((task) => (
         <CardTaskSimple
           key={task.id}
-          category={task.category}
+          category={formatTask.getCategory(task.category)}
           description={task.description}
-          duration={String(task.duration)}
-          id={task.id}
+          duration={formatTask.getDuration(task.duration)}
+          id={formatTask.getID(task.id)}
+          onClick={() => handleNavigateToTask(task.id)}
         />
       ))}
     </Chakra.Grid>
@@ -42,23 +56,23 @@ export interface CardTaskSimpleProps {
   description: string;
   category: string;
   duration: string;
+  onClick: () => void;
 }
 
 export const CardTaskSimple = (props: CardTaskSimpleProps) => {
   return (
-    <Link href="/app/task/">
-      <Chakra.HStack
-        bg="white"
-        w="full"
-        p="4"
-        justify="space-between"
-        cursor="pointer"
-      >
-        <Chakra.Text>{props.id}</Chakra.Text>
-        <Chakra.Text>{props.description}</Chakra.Text>
-        <Chakra.Tag size="sm">{props.category}</Chakra.Tag>
-        <Chakra.Text>{props.duration}</Chakra.Text>
-      </Chakra.HStack>
-    </Link>
+    <Chakra.HStack
+      bg="white"
+      w="full"
+      p="4"
+      justify="space-between"
+      cursor="pointer"
+      onClick={props.onClick}
+    >
+      <Chakra.Text>{props.id}</Chakra.Text>
+      <Chakra.Text>{props.description}</Chakra.Text>
+      <Chakra.Tag size="sm">{props.category}</Chakra.Tag>
+      <Chakra.Text>{props.duration}</Chakra.Text>
+    </Chakra.HStack>
   );
 };
