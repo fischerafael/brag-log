@@ -27,6 +27,7 @@ export const DashboardTask = () => {
   const handleAddTask = () => {
     if (!task.isTaskValid()) return;
     tasks.addTask(task.getTask());
+    task.resetTask();
   };
 
   const isDisabled = !task.isTaskValid();
