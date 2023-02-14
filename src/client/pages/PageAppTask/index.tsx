@@ -9,6 +9,7 @@ import { useCategories } from "../../hooks/useCategories";
 import { Switch } from "../../components/Switch";
 import { useTask } from "../../hooks/useTask";
 import { useTasks } from "../../hooks/useTasks";
+import { useNavigation } from "../../hooks/useNavigation";
 
 export const PageAppTask = () => {
   return (
@@ -23,11 +24,13 @@ export const DashboardTask = () => {
   const categoryOptions = useCategories();
   const task = useTask();
   const tasks = useTasks();
+  const navigation = useNavigation();
 
   const handleAddTask = () => {
     if (!task.isTaskValid()) return;
     tasks.addTask(task.getTask());
     task.resetTask();
+    navigation.navigateTo("/app");
   };
 
   const isDisabled = !task.isTaskValid();

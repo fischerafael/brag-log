@@ -2,6 +2,7 @@ import React from "react";
 import * as Chakra from "@chakra-ui/react";
 import { Header, TemplateLandingPage } from "../PageAppLandingPage";
 import { Link } from "../../components/Link";
+import { useTasks } from "../../hooks/useTasks";
 
 export const PageAppDashboard = () => {
   return (
@@ -13,6 +14,8 @@ export const PageAppDashboard = () => {
 };
 
 export const DashboardMain = () => {
+  const tasks = useTasks();
+
   return (
     <Chakra.Grid
       w="full"
@@ -21,10 +24,9 @@ export const DashboardMain = () => {
       gap="2"
       gridTemplateColumns={["1fr"]}
     >
-      <CardTaskSimple />
-      <CardTaskSimple />
-      <CardTaskSimple />
-      <CardTaskSimple />
+      {tasks.getTasks().map((task) => (
+        <CardTaskSimple key={task.id} />
+      ))}
     </Chakra.Grid>
   );
 };
