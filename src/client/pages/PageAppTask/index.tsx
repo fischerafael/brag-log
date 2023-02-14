@@ -32,8 +32,6 @@ export const DashboardTask = () => {
 
   const isDisabled = !task.isTaskValid();
 
-  console.log(tasks.getTasks());
-
   return (
     <Chakra.Grid
       w="full"
