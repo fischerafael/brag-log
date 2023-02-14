@@ -2,16 +2,18 @@ import { ITask } from "@/src/shared/entities";
 import * as Recoil from "recoil";
 import { formatDate } from "../../utils";
 
+const INITIAL_STATE = {
+  category: "",
+  date: formatDate(new Date())!,
+  description: "",
+  duration: 0.15,
+  id: "",
+  isDone: false,
+};
+
 const taskState = Recoil.atom<ITask>({
   key: "task",
-  default: {
-    category: "",
-    date: formatDate(new Date())!,
-    description: "",
-    duration: 0.15,
-    id: "",
-    isDone: false,
-  },
+  default: INITIAL_STATE,
 });
 
 export const useTask = () => {
@@ -35,10 +37,15 @@ export const useTask = () => {
     );
   };
 
+  const resetTask = () => {
+    setTask(() => INITIAL_STATE);
+  };
+
   return {
     toggleTask,
     getTask,
     setTaskProperty,
     isTaskValid,
+    resetTask,
   };
 };

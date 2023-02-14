@@ -24,9 +24,14 @@ export const useTasks = () => {
     return tasks;
   };
 
+  const resetTasks = () => {
+    setTasks(() => []);
+  };
+
   return {
     addTask,
     removeTask,
     getTasks,
+    resetTasks,
   };
 };
