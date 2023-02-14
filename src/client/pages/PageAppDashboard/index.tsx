@@ -25,7 +25,13 @@ export const DashboardMain = () => {
       gridTemplateColumns={["1fr"]}
     >
       {tasks.getTasks().map((task) => (
-        <CardTaskSimple key={task.id} />
+        <CardTaskSimple
+          key={task.id}
+          category={task.category}
+          description={task.description}
+          duration={String(task.duration)}
+          id={task.id}
+        />
       ))}
     </Chakra.Grid>
   );
@@ -38,7 +44,7 @@ export interface CardTaskSimpleProps {
   duration: string;
 }
 
-export const CardTaskSimple = () => {
+export const CardTaskSimple = (props: CardTaskSimpleProps) => {
   return (
     <Link href="/app/task/">
       <Chakra.HStack
@@ -48,10 +54,10 @@ export const CardTaskSimple = () => {
         justify="space-between"
         cursor="pointer"
       >
-        <Chakra.Text>1324</Chakra.Text>
-        <Chakra.Text>Worked on the dashboard of Brag Log App</Chakra.Text>
-        <Chakra.Tag size="sm">#development</Chakra.Tag>
-        <Chakra.Text>0,5 h</Chakra.Text>
+        <Chakra.Text>{props.id}</Chakra.Text>
+        <Chakra.Text>{props.description}</Chakra.Text>
+        <Chakra.Tag size="sm">{props.category}</Chakra.Tag>
+        <Chakra.Text>{props.duration}</Chakra.Text>
       </Chakra.HStack>
     </Link>
   );
