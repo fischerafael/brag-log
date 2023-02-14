@@ -25,10 +25,10 @@ export const DashboardTask = () => {
   const tasks = useTasks();
 
   const handleAddTask = () => {
-    tasks.handleAddTask(state.task);
+    tasks.addTask(state.task);
   };
 
-  console.log(tasks.handleGetTasks());
+  console.log(tasks.getTasks());
 
   return (
     <Chakra.Grid
