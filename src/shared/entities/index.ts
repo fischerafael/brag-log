@@ -1,9 +1,9 @@
 export interface ITask {
   id: string;
-  date: Date;
+  date: string;
   duration: number;
-  isDone: false;
+  isDone: boolean;
   description: string;
-  category: string[];
+  category: string;
   other?: any;
 }

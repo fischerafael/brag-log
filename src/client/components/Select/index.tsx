@@ -11,7 +11,7 @@ interface SelectProps extends Chakra.SelectProps {
 
 export const Select = ({ options, ...props }: SelectProps) => {
   return (
-    <Chakra.Select {...props}>
+    <Chakra.Select multiple={false} {...props}>
       {options.map((opt) => (
         <option key={opt.value} value={opt.value}>
           {opt.label}

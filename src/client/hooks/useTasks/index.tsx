@@ -1,14 +1,15 @@
 import { ITask } from "@/src/shared/entities";
 import { useState } from "react";
 import * as Recoil from "recoil";
+import { formatDate } from "../../utils";
 
 const taskState = Recoil.atom<ITask>({
   key: "task",
   default: {
-    category: [],
-    date: new Date(),
+    category: "",
+    date: formatDate(new Date())!,
     description: "",
-    duration: 0,
+    duration: 0.15,
     id: "",
     isDone: false,
   },
@@ -22,6 +23,10 @@ export const useTasks = () => {
     setTask((prev) => ({ ...prev, [key]: value }));
   };
 
+  const handleToggleTask = () => {
+    setTask((prev) => ({ ...prev, isDone: !prev.isDone }));
+  };
+
   console.log(task);
 
   return {
@@ -31,6 +36,7 @@ export const useTasks = () => {
     },
     methods: {
       handleSetTask: handleSetTask,
+      handleToggleTask: handleToggleTask,
     },
   };
 };

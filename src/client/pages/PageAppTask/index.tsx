@@ -7,7 +7,6 @@ import { Input } from "../../components/Input";
 import { NumberInput } from "../../components/NumberInput";
 import { useCategories } from "../../hooks/useCategories";
 import { Switch } from "../../components/Switch";
-import { formatDate } from "../../utils";
 import { useTasks } from "../../hooks/useTasks";
 
 export const PageAppTask = () => {
@@ -42,18 +41,46 @@ export const DashboardTask = () => {
           />
         }
       />
-      <FormControl label="Task Duration" input={<NumberInput />} />
+      <FormControl
+        label="Task Duration"
+        input={
+          <NumberInput
+            value={state.task.duration}
+            onChange={(value) => methods.handleSetTask("duration", value)}
+          />
+        }
+      />
       <FormControl
         label="Task Category"
-        input={<Select options={categoryOptions} />}
+        input={
+          <Select
+            options={categoryOptions}
+            value={state.task.category}
+            onChange={(e) => methods.handleSetTask("category", e.target.value)}
+          />
+        }
       />
       <FormControl
         label="Task Date"
-        input={<Input type="date" value={formatDate(new Date())} />}
+        input={
+          <Input
+            type="date"
+            value={state.task.date}
+            onChange={(e) => methods.handleSetTask("date", e.target.value)}
+          />
+        }
       />
 
       <Chakra.HStack w="full" justify="space-between" align="center">
-        <FormControl label="Task Done" input={<Switch />} />
+        <FormControl
+          label="Task Done"
+          input={
+            <Switch
+              isChecked={state.task.isDone}
+              onChange={methods.handleToggleTask}
+            />
+          }
+        />
         <Chakra.Button colorScheme="blue">Save</Chakra.Button>
       </Chakra.HStack>
     </Chakra.Grid>
