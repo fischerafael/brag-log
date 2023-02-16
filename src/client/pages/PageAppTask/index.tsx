@@ -10,6 +10,7 @@ import { Switch } from "../../components/Switch";
 import { useTask } from "../../hooks/useTask";
 import { useTasks } from "../../hooks/useTasks";
 import { useNavigation } from "../../hooks/useNavigation";
+import { Link } from "../../components/Link";
 
 export const PageAppTask = () => {
   return (
@@ -43,6 +44,15 @@ export const DashboardTask = () => {
       gap="2"
       gridTemplateColumns={["1fr"]}
     >
+      <Chakra.HStack w="full" justify="space-between" py="8">
+        <Chakra.Text fontWeight="bold">Task</Chakra.Text>
+        <Link href="/app/">
+          <Chakra.Button colorScheme="blue" variant="outline" borderRadius="4">
+            Return
+          </Chakra.Button>
+        </Link>
+      </Chakra.HStack>
+
       <FormControl
         label="Task Description"
         input={

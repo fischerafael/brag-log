@@ -1,5 +1,5 @@
 import { ITask } from "@/src/shared/entities";
-import * as Recoil from "recoil";
+import React from "react";
 import { formatDate } from "../../utils";
 
 const INITIAL_STATE = {
@@ -11,13 +11,8 @@ const INITIAL_STATE = {
   isDone: false,
 };
 
-const taskState = Recoil.atom<ITask>({
-  key: "task",
-  default: INITIAL_STATE,
-});
-
 export const useTask = () => {
-  const [task, setTask] = Recoil.useRecoilState<ITask>(taskState);
+  const [task, setTask] = React.useState<ITask>(INITIAL_STATE);
 
   const setTaskProperty = (key: keyof ITask, value: string) => {
     setTask((prev) => ({ ...prev, [key]: value }));

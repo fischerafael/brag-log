@@ -37,12 +37,15 @@ export const DashboardMain = () => {
       gap="2"
       gridTemplateColumns={["1fr"]}
     >
-      <Chakra.HStack w="full" justify="space-between">
-        <Chakra.Text>Today's Task</Chakra.Text>
+      <Chakra.HStack w="full" justify="space-between" py="8">
+        <Chakra.Text fontWeight="bold">Today's Task</Chakra.Text>
         <Link href="/app/task">
-          <Chakra.Button colorScheme="blue">New Task</Chakra.Button>
+          <Chakra.Button colorScheme="blue" variant="outline" borderRadius="4">
+            New
+          </Chakra.Button>
         </Link>
       </Chakra.HStack>
+
       {tasks.getTasks().map((task) => (
         <CardTaskSimple
           key={task.id}
