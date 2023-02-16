@@ -4,7 +4,6 @@ import { Header, TemplateLandingPage } from "../PageAppLandingPage";
 import { Link } from "../../components/Link";
 import { useTasks } from "../../hooks/useTasks";
 import { useFormatTask } from "../../hooks/useFormatTask";
-import { useTask } from "../../hooks/useTask";
 import { useNavigation } from "../../hooks/useNavigation";
 
 export const PageAppDashboard = () => {
@@ -19,14 +18,10 @@ export const PageAppDashboard = () => {
 export const DashboardMain = () => {
   const tasks = useTasks();
   const formatTask = useFormatTask();
-  const task = useTask();
   const navigate = useNavigation();
 
   const handleNavigateToTask = (taskId: string) => {
-    const selectedTask = tasks.getTask(taskId);
-    if (!selectedTask) return;
-    task.setWholeTask(selectedTask);
-    navigate.navigateTo("/app/task");
+    navigate.navigateTo(`/app/task?id=${taskId}`);
   };
 
   return (

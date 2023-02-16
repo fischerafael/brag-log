@@ -11,6 +11,7 @@ import { useTask } from "../../hooks/useTask";
 import { useTasks } from "../../hooks/useTasks";
 import { useNavigation } from "../../hooks/useNavigation";
 import { Link } from "../../components/Link";
+import { useRouter } from "next/router";
 
 export const PageAppTask = () => {
   return (
@@ -22,16 +23,31 @@ export const PageAppTask = () => {
 };
 
 export const DashboardTask = () => {
+  const router = useRouter();
   const categoryOptions = useCategories();
   const task = useTask();
   const tasks = useTasks();
   const navigation = useNavigation();
 
-  const handleAddTask = () => {
+  React.useEffect(() => {
+    if (!router.query.id) return;
+    const existingTask = tasks.getTask(router.query.id as string);
+    task.setWholeTask(existingTask!);
+  }, [router.query.id]);
+
+  const AddTask = () => {
     if (!task.isTaskValid()) return;
     tasks.addTask(task.getTask());
     task.resetTask();
     navigation.navigateTo("/app");
+  };
+
+  const handleOnClick = () => {
+    if (task.getTask().id) {
+      alert("update");
+      return;
+    }
+    alert("create");
   };
 
   const isDisabled = !task.isTaskValid();
@@ -107,7 +123,7 @@ export const DashboardTask = () => {
         <Chakra.Button
           colorScheme="blue"
           isDisabled={isDisabled}
-          onClick={handleAddTask}
+          onClick={handleOnClick}
         >
           Save
         </Chakra.Button>
