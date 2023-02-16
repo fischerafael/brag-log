@@ -8,7 +8,7 @@ import { useNavigation } from "../../hooks/useNavigation";
 
 export const PageAppDashboard = () => {
   return (
-    <TemplateLandingPage bg="gray.50">
+    <TemplateLandingPage>
       <Header />
       <DashboardMain />
     </TemplateLandingPage>
@@ -66,16 +66,19 @@ export interface CardTaskSimpleProps {
 export const CardTaskSimple = (props: CardTaskSimpleProps) => {
   return (
     <Chakra.HStack
-      bg="white"
       w="full"
       p="4"
       justify="space-between"
       cursor="pointer"
       onClick={props.onClick}
+      spacing="4"
+      _hover={{ bg: "gray.50" }}
     >
       <Chakra.Text>{props.id}</Chakra.Text>
-      <Chakra.Text>{props.description}</Chakra.Text>
-      <Chakra.Tag size="sm">{props.category}</Chakra.Tag>
+      <Chakra.Text w="full">{props.description}</Chakra.Text>
+      <Chakra.Text fontSize="xs" p="1" bg="blue.50">
+        {props.category}
+      </Chakra.Text>
       <Chakra.Text>{props.duration}</Chakra.Text>
     </Chakra.HStack>
   );

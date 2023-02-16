@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 
 export const PageAppTask = () => {
   return (
-    <TemplateLandingPage bg="gray.50">
+    <TemplateLandingPage>
       <Header />
       <DashboardTask />
     </TemplateLandingPage>
@@ -35,19 +35,25 @@ export const DashboardTask = () => {
     task.setWholeTask(existingTask!);
   }, [router.query.id]);
 
-  const AddTask = () => {
+  const addTask = () => {
     if (!task.isTaskValid()) return;
     tasks.addTask(task.getTask());
     task.resetTask();
     navigation.navigateTo("/app");
   };
 
+  const updateTask = () => {
+    tasks.updateTask(task.getTask());
+    task.resetTask();
+    navigation.navigateTo("/app");
+  };
+
   const handleOnClick = () => {
     if (task.getTask().id) {
-      alert("update");
+      updateTask();
       return;
     }
-    alert("create");
+    addTask();
   };
 
   const isDisabled = !task.isTaskValid();

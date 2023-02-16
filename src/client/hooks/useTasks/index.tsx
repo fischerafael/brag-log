@@ -32,11 +32,22 @@ export const useTasks = () => {
     setTasks(() => []);
   };
 
+  const updateTask = (taskToUpdate: ITask) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === taskToUpdate.id) {
+        return taskToUpdate;
+      }
+      return task;
+    });
+    setTasks(() => updatedTasks);
+  };
+
   return {
     addTask,
     removeTask,
     getTasks,
     resetTasks,
     getTask,
+    updateTask,
   };
 };

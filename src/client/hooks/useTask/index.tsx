@@ -40,8 +40,6 @@ export const useTask = () => {
     setTask(() => INITIAL_STATE);
   };
 
-  console.log(getTask());
-
   return {
     toggleTask,
     getTask,
