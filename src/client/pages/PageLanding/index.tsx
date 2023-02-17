@@ -77,6 +77,7 @@ export const PageLanding = () => {
                   10%
                 </Chakra.StatHelpText>
               </Chakra.Stat>
+
               <Chakra.Stat>
                 <Chakra.StatLabel>#design</Chakra.StatLabel>
                 <Chakra.CircularProgress value={30} py="1">
