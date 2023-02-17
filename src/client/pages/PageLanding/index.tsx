@@ -64,26 +64,34 @@ export const PageLanding = () => {
               </Chakra.Stat>
             </Chakra.HStack>
 
-            <Chakra.SimpleGrid w="full" columns={2}>
+            <Chakra.SimpleGrid w="full" columns={2} gap="2">
               <Chakra.Stat>
                 <Chakra.StatLabel>#development</Chakra.StatLabel>
-                <Chakra.CircularProgress value={30} py="2">
+                <Chakra.CircularProgress value={30} py="1">
                   <Chakra.CircularProgressLabel>
                     30%
                   </Chakra.CircularProgressLabel>
                 </Chakra.CircularProgress>
+                <Chakra.StatHelpText>
+                  <Chakra.StatArrow type="increase" />
+                  10%
+                </Chakra.StatHelpText>
               </Chakra.Stat>
               <Chakra.Stat>
                 <Chakra.StatLabel>#design</Chakra.StatLabel>
-                <Chakra.CircularProgress value={30} py="2">
+                <Chakra.CircularProgress value={30} py="1">
                   <Chakra.CircularProgressLabel>
                     30%
                   </Chakra.CircularProgressLabel>
                 </Chakra.CircularProgress>
+                <Chakra.StatHelpText>
+                  <Chakra.StatArrow type="increase" />
+                  1%
+                </Chakra.StatHelpText>
               </Chakra.Stat>
               <Chakra.Stat>
                 <Chakra.StatLabel>#meetings</Chakra.StatLabel>
-                <Chakra.CircularProgress value={30} py="2">
+                <Chakra.CircularProgress value={30} py="1">
                   <Chakra.CircularProgressLabel>
                     10%
                   </Chakra.CircularProgressLabel>
@@ -91,13 +99,18 @@ export const PageLanding = () => {
               </Chakra.Stat>
               <Chakra.Stat>
                 <Chakra.StatLabel>#studing</Chakra.StatLabel>
-                <Chakra.CircularProgress value={30} py="2">
+                <Chakra.CircularProgress value={30} py="1">
                   <Chakra.CircularProgressLabel>
                     10%
                   </Chakra.CircularProgressLabel>
                 </Chakra.CircularProgress>
               </Chakra.Stat>
             </Chakra.SimpleGrid>
+            <Chakra.HStack w="full" justify="flex-end">
+              <Chakra.Button variant="outline" size="sm">
+                Share
+              </Chakra.Button>
+            </Chakra.HStack>
           </Chakra.VStack>
         </Chakra.VStack>
       </Chakra.Grid>
