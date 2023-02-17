@@ -1,7 +1,7 @@
-import { PageAppLandingPage } from "@/src/client/pages/PageAppLandingPage";
+import { PageLanding } from "@/src/client/pages/PageLanding";
 
 const index = () => {
-  return <PageAppLandingPage />;
+  return <PageLanding />;
 };
 
 export default index;
